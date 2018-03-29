@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import Login from './containers/Login/Login'
 import logo from './logo.svg';
 import './App.css';
+
 class App extends Component {
 
   render() {
     return (
+      <MuiThemeProvider>
+            <Login />
 
-    <h1>HI HERE IS REACT</h1>
-
+      </MuiThemeProvider>
     );
   }
 }
