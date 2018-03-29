@@ -13,6 +13,9 @@ const toolbar = () => (
   <div className = {classes.Logo}>
     <Logo />
   </div>
+
+  
+
   </header>
 );
 

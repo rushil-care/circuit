@@ -3,11 +3,12 @@
   padding: 8px;
   height: 100%;
   box-sizing: border-box;
-  border-radius: 5px;
+  border-radius: 100%;
 
 }
 
 .Logo img {
   height: 100%;
+  width: 50px;
 
 }
