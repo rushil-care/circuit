@@ -39,7 +39,7 @@ class GridExampleDividedNumber extends Component {
           <Card.Content textAlign={"center"}>
           <Feed>
 
-
+    
             <Grid columns={3} divided>
               <Grid.Row centered={true} >
                 <Grid.Column textAlign={"center"}>
@@ -81,6 +81,7 @@ class GridExampleDividedNumber extends Component {
           </Grid.Row>
 
         </Grid>
+
         </Feed>
           </Card.Content>
         </Card>

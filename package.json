@@ -22,7 +22,7 @@
     "express": "^4.16.2",
     "jsonwebtoken": "^8.2.0",
     "lodash": "^4.17.5",
-    "materialize-css": "^1.0.0-beta",
+    "material-ui": "^1.0.0-beta.39",
     "mongodb": "^3.0.5",
     "mongoose": "^5.0.11",
     "semantic-ui-react": "^0.79.0",

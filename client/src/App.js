@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Login from './containers/Login/Login'
-import logo from './logo.svg';
 import './App.css';
-import Toolbar from './components/Navigation/Toolbar/Toolbar';
-import Test from './test';
-import StudentRegister from './containers/StudentRegister/StudentRegister';
+import StudentRegister from './components/StudentRegister/StudentRegister';
 class App extends Component {
 
   render() {
