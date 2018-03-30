@@ -1,216 +1,144 @@
-import React from 'react'
-import { Button, Container, Divider, Grid, Header, Image, Menu, Segment } from 'semantic-ui-react'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from 'material-ui/styles';
+import Input, { InputLabel } from 'material-ui/Input';
+import { FormControl, FormHelperText } from 'material-ui/Form';
+import Select from 'material-ui/Select';
 
-const ThemingLayout = () => (
-  <Container style={{ marginTop: '3em' }}>
-    <Header as='h1'>Theming Examples</Header>
+const styles = theme => ({
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  formControl: {
+    margin: theme.spacing.unit,
+    minWidth: 120,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing.unit * 2,
+  },
+});
 
-    <Header as='h2' dividing>Site</Header>
+class NativeSelect extends React.Component {
+  state = {
+    age: '',
+    name: 'hai',
+  };
 
-    <Grid columns={3} stackable>
-      <Grid.Column>
-        <Header as='h1'>Heading 1</Header>
-        <Header as='h2'>Heading 2</Header>
-        <Header as='h3'>Heading 3</Header>
-        <Header as='h4'>Heading 4</Header>
-        <Header as='h5'>Heading 5</Header>
+  handleChange = name => event => {
+    this.setState({ [name]: event.target.value });
+  };
 
-        <p>
-          Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient
-          montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.
-        </p>
-      </Grid.Column>
+  render() {
+    const { classes } = this.props;
 
-      <Grid.Column>
-        <Header as='h2'>Example body text</Header>
+    return (
+      <div className={classes.root}>
+        <FormControl className={classes.formControl}>
+          <InputLabel htmlFor="age-native-simple">Age</InputLabel>
+          <Select
+            native
+            value={this.state.age}
+            onChange={this.handleChange('age')}
+            inputProps={{
+              id: 'age-native-simple',
+            }}
+          >
+            <option value="" />
+            <option value={10}>Ten</option>
+            <option value={20}>Twenty</option>
+            <option value={30}>Thirty</option>
+          </Select>
+        </FormControl>
+        <FormControl className={classes.formControl}>
+          <InputLabel htmlFor="age-native-helper">Age</InputLabel>
+          <Select
+            native
+            value={this.state.age}
+            onChange={this.handleChange('age')}
+            input={<Input id="age-native-helper" />}
+          >
+            <option value="" />
+            <option value={10}>Ten</option>
+            <option value={20}>Twenty</option>
+            <option value={30}>Thirty</option>
+          </Select>
+          <FormHelperText>Some important helper text</FormHelperText>
+        </FormControl>
+        <FormControl className={classes.formControl}>
+          <Select
+            native
+            value={this.state.age}
+            onChange={this.handleChange('age')}
+            className={classes.selectEmpty}
+          >
+            <option value="">None</option>
+            <option value={10}>Ten</option>
+            <option value={20}>Twenty</option>
+            <option value={30}>Thirty</option>
+          </Select>
+          <FormHelperText>Without label</FormHelperText>
+        </FormControl>
+        <FormControl className={classes.formControl} disabled>
+          <InputLabel htmlFor="name-native-disabled">Name</InputLabel>
+          <Select
+            native
+            value={this.state.name}
+            onChange={this.handleChange('name')}
+            input={<Input id="name-native-disabled" />}
+          >
+            <option value="" />
+            <optgroup label="Author">
+              <option value="hai">Hai</option>
+            </optgroup>
+            <optgroup label="Contributors">
+              <option value="olivier">Olivier</option>
+              <option value="kevin">Kevin</option>
+            </optgroup>
+          </Select>
+          <FormHelperText>Disabled</FormHelperText>
+        </FormControl>
+        <FormControl className={classes.formControl} error>
+          <InputLabel htmlFor="name-native-error">Name</InputLabel>
+          <Select
+            native
+            value={this.state.name}
+            onChange={this.handleChange('name')}
+            input={<Input id="name-native-error" />}
+          >
+            <option value="" />
+            <optgroup label="Author">
+              <option value="hai">Hai</option>
+            </optgroup>
+            <optgroup label="Contributors">
+              <option value="olivier">Olivier</option>
+              <option value="kevin">Kevin</option>
+            </optgroup>
+          </Select>
+          <FormHelperText>Error</FormHelperText>
+        </FormControl>
+        <FormControl className={classes.formControl}>
+          <InputLabel htmlFor="name-input">Name</InputLabel>
+          <Input id="name-input" />
+          <FormHelperText>Alignment with an input</FormHelperText>
+        </FormControl>
+        <FormControl className={classes.formControl}>
+          <InputLabel htmlFor="uncontrolled-native">Name</InputLabel>
+          <Select native defaultValue={30} input={<Input id="uncontrolled-native" />}>
+            <option value="" />
+            <option value={10}>Ten</option>
+            <option value={20}>Twenty</option>
+            <option value={30}>Thirty</option>
+          </Select>
+          <FormHelperText>Uncontrolled</FormHelperText>
+        </FormControl>
+      </div>
+    );
+  }
+}
 
-        <p>
-          Nullam quis risus eget <a href='#'>urna mollis ornare</a> vel eu leo. Cum sociis natoque penatibus et magnis
-          dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.
-        </p>
-        <p>
-          <small>This line of text is meant to be treated as fine print.</small>
-        </p>
-        <p>The following snippet of text is <strong>rendered as bold text</strong>.</p>
-        <p>The following snippet of text is <em>rendered as italicized text</em>.</p>
-        <p>An abbreviation of the word attribute is <abbr title='attribute'>attr</abbr>.</p>
-      </Grid.Column>
+NativeSelect.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
 
-      <Grid.Column>
-        <Grid
-          centered
-          columns={3}
-          padded
-          stackable
-          style={{ margin: '-1.5em', width: 400 }}
-          textAlign='middle'
-        >
-          <Grid.Column color='red' style={{ margin: '0.5em', height: 50 }}>Red</Grid.Column>
-          <Grid.Column color='orange' style={{ margin: '0.5em', height: 50 }}>Orange</Grid.Column>
-          <Grid.Column color='yellow' style={{ margin: '0.5em', height: 50 }}>Yellow</Grid.Column>
-          <Grid.Column color='olive' style={{ margin: '0.5em', height: 50 }}>Olive</Grid.Column>
-          <Grid.Column color='green' style={{ margin: '0.5em', height: 50 }}>Green</Grid.Column>
-          <Grid.Column color='teal' style={{ margin: '0.5em', height: 50 }}>Teal</Grid.Column>
-          <Grid.Column color='blue' style={{ margin: '0.5em', height: 50 }}>Blue</Grid.Column>
-          <Grid.Column color='violet' style={{ margin: '0.5em', height: 50 }}>Violet</Grid.Column>
-          <Grid.Column color='purple' style={{ margin: '0.5em', height: 50 }}>Purple</Grid.Column>
-          <Grid.Column color='pink' style={{ margin: '0.5em', height: 50 }}>Pink</Grid.Column>
-          <Grid.Column color='brown' style={{ margin: '0.5em', height: 50 }}>Brown</Grid.Column>
-          <Grid.Column color='grey' style={{ margin: '0.5em', height: 50 }}>Grey</Grid.Column>
-          <Grid.Column color='black' style={{ margin: '0.5em', height: 50 }}>Black</Grid.Column>
-        </Grid>
-      </Grid.Column>
-    </Grid>
-
-    <Header as='h2' dividing>Menu</Header>
-
-    <Grid columns={3} doubling>
-      <Grid.Column>
-        <Menu
-          items={[
-            { key: '1', name: 'link-1', content: 'Link' },
-            { key: '2', name: 'link-2', content: 'Link' },
-            { key: '3', name: 'link-3', content: 'Link' },
-          ]}
-          pointing
-          secondary
-        />
-      </Grid.Column>
-
-      <Grid.Column>
-        <Menu
-          items={[
-            { key: '1', name: 'link-1', content: 'Link' },
-            { key: '2', name: 'link-2', content: 'Link' },
-            { key: '3', name: 'link-3', content: 'Link' },
-          ]}
-          pointing
-          tabular
-        />
-      </Grid.Column>
-
-      <Grid.Column>
-        <Menu
-          items={[
-            { key: 'l1', name: 'link-1', content: 'Link' },
-            { key: 'l2', name: 'link-2', content: 'Link' },
-            { key: 't1', name: 'text-1', content: 'Right text', position: 'right' },
-          ]}
-          pointing
-        />
-      </Grid.Column>
-    </Grid>
-
-    <Header as='h2' dividing>Buttons</Header>
-
-    <Grid columns='equal'>
-      <Grid.Column>
-        <Button>Default</Button>
-        <Button primary>Primary</Button>
-        <Button secondary>Secondary</Button>
-        <Button basic>Basic</Button>
-        <Button compact>Compact</Button>
-
-        <Divider />
-
-        <Button icon='heart' />
-        <Button content='Labeled' icon='heart' labelPosition='left' />
-        <Button content='Labeled' icon='heart' labelPosition='right' />
-
-        <Divider />
-
-        <Button.Group>
-          <Button>Combo</Button>
-        </Button.Group>
-
-        <Divider />
-
-        <Button animated>
-          <Button.Content visible>Horizontal</Button.Content>
-          <Button.Content hidden>Hidden</Button.Content>
-        </Button>
-        <Button animated='vertical'>
-          <Button.Content visible>Vertical</Button.Content>
-          <Button.Content hidden>Hidden</Button.Content>
-        </Button>
-        <Button animated='fade'>
-          <Button.Content visible>Fade In</Button.Content>
-          <Button.Content hidden>Hidden</Button.Content>
-        </Button>
-
-        <Divider />
-
-        <Button disabled>Disabled</Button>
-        <Button loading>Loading</Button>
-
-        <Divider />
-
-        <Button.Group>
-          <Button>1</Button>
-          <Button>2</Button>
-          <Button>3</Button>
-        </Button.Group>
-
-        <Button.Group>
-          <Button icon='align left icon' />
-          <Button icon='align center icon' />
-          <Button icon='align right icon' />
-          <Button icon='align justify icon' />
-        </Button.Group>
-
-        <Button.Group>
-          <Button>1</Button>
-          <Button.Or />
-          <Button>2</Button>
-        </Button.Group>
-
-        <Divider />
-
-        <Button.Group attached='top' widths={2}>
-          <Button>One</Button>
-          <Button>Two</Button>
-        </Button.Group>
-        <Segment attached>
-          <Image src='/assets/images/wireframe/paragraph.png' />
-        </Segment>
-        <Button.Group attached='bottom' widths={2}>
-          <Button>One</Button>
-          <Button>Two</Button>
-        </Button.Group>
-      </Grid.Column>
-
-      <Grid.Column>
-        <Button size='mini'>Mini</Button>
-        <Button size='tiny'>Tiny</Button>
-        <Button size='small'>Small</Button>
-        <Button size='large'>Large</Button>
-        <Button size='big button'>Big</Button>
-        <Button size='huge button'>Huge</Button>
-        <Button size='massive'>Massive</Button>
-
-        <Divider />
-
-        <Button color='yellow' style={{ marginBottom: '1em' }}>Yellow</Button>
-        <Button color='orange' style={{ marginBottom: '1em' }}>Orange</Button>
-        <Button color='green' style={{ marginBottom: '1em' }}>Green</Button>
-        <Button color='teal' style={{ marginBottom: '1em' }}>Teal</Button>
-        <Button color='blue' style={{ marginBottom: '1em' }}>Blue</Button>
-        <Button color='purple' style={{ marginBottom: '1em' }}>Purple</Button>
-        <Button color='pink' style={{ marginBottom: '1em' }}>Pink</Button>
-        <Button color='red' style={{ marginBottom: '1em' }}>Red</Button>
-        <Button color='black' style={{ marginBottom: '1em' }}>Black</Button>
-
-        <Divider />
-
-        <Segment inverted>
-          <Button inverted>Inverted</Button>
-          <Button basic inverted>Basic</Button>
-          <Button color='blue' inverted>Colored</Button>
-          <Button basic color='blue' inverted>Basic Colored</Button>
-        </Segment>
-      </Grid.Column>
-    </Grid>
-  </Container>
-)
-
-export default ThemingLayout
+export default withStyles(styles)(NativeSelect);

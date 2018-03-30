@@ -1,11 +1,16 @@
-.input{
-    padding: 20px 5px;
-    width: 300px;
-}
-.form-Container
+
+.CardContainer
 {
-    background: #ffffff;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px #a0a0a0;
+    margin-top: 10vh;
+}
+.rowItem
+{
+    margin:20px 0px;
+}
+.buttonSubmit
+{
     margin-top: 50px;
+}
+.List{
+  width: 200px;
 }
