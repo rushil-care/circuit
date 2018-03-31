@@ -1,10 +1,9 @@
-
 import React, {Component} from 'react'
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
 import Grid from 'material-ui/Grid';
-import Card, { CardActions, CardContent } from 'material-ui/Card';
+import Card, { CardHeader, CardMedia, CardContent, CardActions } from 'material-ui/Card';
 import TextField from 'material-ui/TextField';
 import IconButton from 'material-ui/IconButton';
 import Input, { InputLabel, InputAdornment } from 'material-ui/Input';
@@ -17,6 +16,12 @@ import './StudentRegister.css'
 import MenuItem from 'material-ui/Menu/MenuItem';
 import Button from 'material-ui/Button';
 import Select from 'material-ui/Select';
+import DateFnsUtils from 'material-ui-pickers/utils/date-fns-utils';
+import MuiPickersUtilsProvider from 'material-ui-pickers/utils/MuiPickersUtilsProvider';
+import Date from '../../components/DatePicker/DatePicker';
+import SignUpHeader from '../../components/SignUpHeader/SignUpHeader';
+import AppBar from '../../components/AppBar/AppBar';
+
 
 const styles = theme => ({
   root: {
@@ -48,6 +53,8 @@ class FullWidthGrid extends Component {
 
     return (
       <div className={classes.root}>
+      <AppBar />
+
           {/* Master Grid */}
           <Grid container spacing={24} className="formContainer" >
               <Grid item xs={12}  >
@@ -58,6 +65,7 @@ class FullWidthGrid extends Component {
 
                           {/* Card Begins */}
                           <Card className="CardContainer">
+                          <SignUpHeader />
                               <CardContent>
                                   <Grid container >
                                       <Grid item xs={12} >
@@ -66,7 +74,7 @@ class FullWidthGrid extends Component {
                                           <Grid container direction='row' spacing={8} align='center' justify='center' className="rowItem" >
                                               <Grid item xs={12} md={6}  >
 
-                                                  <FormControl className={classNames(classes.margin, classes.textField)}>
+                                                  <FormControl className={classNames(classes.margin, classes.textField)} className="List">
                                                       <InputLabel htmlFor="RegNo">Registration No.</InputLabel>
                                                       <Input
                                                           id="RegNo"
@@ -92,8 +100,10 @@ class FullWidthGrid extends Component {
                                                          onChange={this.handleChange('department')}
                                                          inputProps={{
                                                            id: 'DEPARTMENT-CHOICE',
+
                                                          }}
                                                        >
+
                                                          <option value="" />
                                                          <option value={0}>Electronics and Communication</option>
                                                          <option value={1}>Electronics and Electrical</option>
@@ -110,7 +120,7 @@ class FullWidthGrid extends Component {
                                           <Grid container direction='row' spacing={8} align='center' justify='center' className="rowItem" >
                                               <Grid item xs={12} md={6}  >
 
-                                                  <FormControl className={classNames(classes.margin, classes.textField)}>
+                                                  <FormControl className={classNames(classes.margin, classes.textField)} className="List">
                                                       <InputLabel htmlFor="FirstName">First Name</InputLabel>
                                                       <Input
                                                           id="FirstName"
@@ -125,7 +135,7 @@ class FullWidthGrid extends Component {
                                                   </FormControl>
                                               </Grid>
                                               <Grid item xs={12} md={6}>
-                                                  <FormControl className={classNames(classes.margin, classes.textField)}>
+                                                  <FormControl className={classNames(classes.margin, classes.textField)} className="List">
                                                       <InputLabel htmlFor="LastName">Last Name</InputLabel>
                                                       <Input
                                                           id="LastName"
@@ -145,7 +155,7 @@ class FullWidthGrid extends Component {
                                           <Grid container direction='row' spacing={8} align='center' justify='center' className="rowItem" >
                                               <Grid item xs={12} md={6}  >
 
-                                                  <FormControl className={classNames(classes.margin, classes.textField)}>
+                                                  <FormControl className={classNames(classes.margin, classes.textField)} className="List">
                                                       <InputLabel htmlFor="Password">Password</InputLabel>
                                                       <Input
                                                           id="Password"
@@ -160,7 +170,7 @@ class FullWidthGrid extends Component {
                                                   </FormControl>
                                               </Grid>
                                               <Grid item xs={12} md={6}>
-                                                  <FormControl className={classNames(classes.margin, classes.textField)}>
+                                                  <FormControl className={classNames(classes.margin, classes.textField)} className="List">
                                                       <InputLabel htmlFor="ConfPassword">Confirm Password</InputLabel>
                                                       <Input
                                                           id="ConfPassword"
@@ -180,7 +190,7 @@ class FullWidthGrid extends Component {
                                           <Grid container direction='row' spacing={8} align='center' justify='center' className="rowItem" >
                                               <Grid item xs={12} md={6}  >
 
-                                                  <FormControl className={classNames(classes.margin, classes.textField)}>
+                                                  <FormControl className={classNames(classes.margin, classes.textField)} className="List">
                                                       <InputLabel htmlFor="Email">Email</InputLabel>
                                                       <Input
                                                           id="Email"
@@ -195,32 +205,23 @@ class FullWidthGrid extends Component {
                                                   </FormControl>
                                               </Grid>
                                               <Grid item xs={12} md={6}>
-                                                  <FormControl className={classNames(classes.margin, classes.textField)}>
-                                                      <InputLabel htmlFor="RegNo">Date of Birth</InputLabel>
-                                                      <Input
-                                                          id="DOB"
-                                                          type="text"
-                                                          className="rowItem"
-                                                          endAdornment={
-                                                              <InputAdornment position="end">
-                                                                  <Icon>date_range</Icon>
-                                                              </InputAdornment>
-                                                          }
-                                                      />
+                                                  <FormControl className={classNames(classes.margin, classes.textField)} className="List" >
+                                                  <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                                  <Date />
+                                                  </MuiPickersUtilsProvider>
+
+
                                                   </FormControl>
                                               </Grid>
                                           </Grid>
 
 
 
-
-
-                                          <Grid container direction='row' spacing={8} align='center' justify='center' className=" buttonSubmit" >
+                                          <Grid container direction='row' spacing={8} align='center' justify='center' className="buttonSubmit" >
                                               <Button variant="raised" color="secondary" >
                                                   Submit
                                                   </Button>
                                           </Grid>
-
                                       </Grid>
                                   </Grid>
                               </CardContent>
