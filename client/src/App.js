@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import StudentRegister from './containers/StudentRegister/StudentRegister';
+import Faculty from './containers/StudentRegister/StudentRegister';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import purple from 'material-ui/colors/purple';
 import yellow from 'material-ui/colors/yellow';
@@ -18,7 +18,7 @@ class App extends Component {
     return (
       <MuiThemeProvider theme={theme}>
 
-      <StudentRegister />
+      <Faculty />
       </MuiThemeProvider>
     );
   }

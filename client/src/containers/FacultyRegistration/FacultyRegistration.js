@@ -2,18 +2,14 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import {Paper,Grid,TextField,Select,Button,Icon,IconButton} from 'material-ui';
-
 import Card, { CardHeader, CardMedia, CardContent, CardActions } from 'material-ui/Card';
-
 import Input, { InputLabel, InputAdornment } from 'material-ui/Input';
 import {Visibility,VisibilityOff} from 'material-ui-icons';
 import { FormControl, FormHelperText } from 'material-ui/Form';
 import classNames from 'classnames';
-import './StudentRegister.css'
+import './FacultyRegistration.css'
 import MenuItem from 'material-ui/Menu/MenuItem';
-
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
-
 import DateFnsUtils from 'material-ui-pickers/utils/date-fns-utils';
 import MuiPickersUtilsProvider from 'material-ui-pickers/utils/MuiPickersUtilsProvider';
 import Date from '../../components/DatePicker/DatePicker';
@@ -57,7 +53,7 @@ const theme = createMuiTheme({
 });
 
 
-class StudentReg extends Component {
+class FacultyReg extends Component {
 
   state = {
      department: '',
@@ -85,20 +81,20 @@ class StudentReg extends Component {
 
                           {/* Card Begins */}
                           <Card className="CardContainer">
-                          <SignUpHeader name="STUDENT REGISTER" />
+                          <SignUpHeader name="FACULTY REGISTER" />
                               <CardContent>
                                   <Grid container >
                                       <Grid item xs={12} >
                                           {/* Row for two fields */}
-                                          {/* Reg no & Department */}
+                                          {/* Employee ID & Department */}
                                           <Grid container direction='row' spacing={24} align='center' justify='center' className="rowItem" >
                                               <Grid item xs={12} md={6}  >
 
                                                   <FormControl className={classNames(classes.margin, classes.textField)} className="rowItem List" >
-                                                      <InputLabel htmlFor="RegNo">Registration No.</InputLabel>
+                                                      <InputLabel htmlFor="EmId">Employee Id</InputLabel>
                                                       <Input
 
-                                                          id="RegNo"
+                                                          id="EmId"
                                                           type="text"
 
                                                           endAdornment={
@@ -264,10 +260,10 @@ class StudentReg extends Component {
 
  }
 }
- StudentReg .propTypes = {
+ FacultyReg .propTypes = {
    classes: PropTypes.object.isRequired,
  };
 
 
 
-export default withStyles(styles)(StudentReg);
+export default withStyles(styles)(FacultyReg);
