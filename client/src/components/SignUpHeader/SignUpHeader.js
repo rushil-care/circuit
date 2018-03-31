@@ -35,7 +35,7 @@ function ButtonAppBar(props) {
               <i class="material-icons" style={iconStyles}>account_circle</i>
          </IconButton>
           <Typography variant="title" color="inherit" className={classes.flex}>
-            REGISTER
+          {props.name}
           </Typography>
 
         </Toolbar>

@@ -4,7 +4,7 @@ import './DatePicker.css';
 
 export default class BasicUsage extends PureComponent {
   state = {
-    selectedDate: new Date(),
+    selectedDate: null,
   }
 
   handleDateChange = (date) => {
@@ -22,6 +22,8 @@ export default class BasicUsage extends PureComponent {
             keyboard
             label="Date of Birth"
             format="DD/MM/YYYY"
+            autoOk = "true"
+            placeholder ="DD/MM/YYYY"
             mask={[/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]}
             value={selectedDate}
             onChange={this.handleDateChange}

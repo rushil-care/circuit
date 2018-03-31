@@ -1,16 +1,16 @@
-
 .CardContainer
 {
     margin-top: 10vh;
 }
 .rowItem
 {
-    margin:20px 0px;
+    padding-top:20px;
 }
 .submitButton
 {
-    margin-top: 4vh;
+    padding: 7vh 0vh 3vh 0vh;
+
 }
 .List{
-  width: 200px;
+  width: 230px;
 }
