@@ -19,7 +19,7 @@ import MuiPickersUtilsProvider from 'material-ui-pickers/utils/MuiPickersUtilsPr
 import Date from '../../components/DatePicker/DatePicker';
 import SignUpHeader from '../../components/SignUpHeader/SignUpHeader';
 import AppBar from '../../components/AppBar/AppBar';
-
+import axios from 'axios';
 
 const styles = theme => ({
   root: {
@@ -62,7 +62,28 @@ class StudentReg extends Component {
   state = {
      department: '',
      name: 'hai',
+     RegistrationNo : '',
+     FirstName : '',
+     LastName: '',
+     Password: '',
+     Email: ''
+
    };
+
+   signupHandler = () => {
+        const data = {
+          RegistrationNo : this.state.RegistrationNo,
+          Name : this.state.FirstName + ' ' + this.state.LastName,
+          Password : this.state.Password,
+          Email: this.state.Email
+
+        }
+        axios.post('',data)
+        .then(response => {
+          console.log(response);
+        });
+
+   }
 
    handleChange = name => event => {
      this.setState({ [name]: event.target.value });
@@ -100,7 +121,7 @@ class StudentReg extends Component {
 
                                                           id="RegNo"
                                                           type="text"
-
+                                                          value={this.state.RegistrationNo} onChange={(event) => this.setState({RegistrationNo: event.target.value})}
                                                           endAdornment={
                                                               <InputAdornment position="end">
                                                                   <Icon>perm_contact_calendar</Icon>
@@ -151,7 +172,7 @@ class StudentReg extends Component {
                                                       <Input
                                                           id="FirstName"
                                                           type="text"
-
+                                                          value={this.state.FirstName} onChange={(event) => this.setState({FirstName: event.target.value})}
                                                           endAdornment={
                                                               <InputAdornment position="end">
                                                                   <Icon>account_circle</Icon>
@@ -166,6 +187,7 @@ class StudentReg extends Component {
                                                       <Input
                                                           id="LastName"
                                                           type="text"
+                                                          value={this.state.LastName} onChange={(event) => this.setState({LastName: event.target.value})}
                                                           endAdornment={
                                                               <InputAdornment position="end">
                                                                   <Icon>account_circle</Icon>
@@ -200,6 +222,7 @@ class StudentReg extends Component {
                                                       <Input
                                                           id="ConfPassword"
                                                           type="password"
+                                                          value={this.state.Password} onChange={(event) => this.setState({Password: event.target.value})}
                                                           endAdornment={
                                                               <InputAdornment position="end">
                                                                   <Icon>vpn_key</Icon>
@@ -219,7 +242,7 @@ class StudentReg extends Component {
                                                       <Input
                                                           id="Email"
                                                           type="email"
-
+                                                          value={this.state.Email} onChange={(event) => this.setState({Email: event.target.value})}
                                                           endAdornment={
                                                               <InputAdornment position="end">
                                                                   <Icon>mail</Icon>
@@ -244,7 +267,10 @@ class StudentReg extends Component {
                                           <Grid container direction='row' spacing={24} align='center' justify='center' className="submitButton" >
                                           <MuiThemeProvider theme={theme}>
 
-                                              <Button variant="raised" color="secondary" >
+                                              <Button variant="raised" color="secondary"
+                                                  onClick={this.signupHandler}
+
+                                               >
 
                                                   Submit
                                                   </Button>
