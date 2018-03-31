@@ -123,6 +123,11 @@ class FullWidthGrid extends Component {
                                                            id: 'DEPARTMENT-CHOICE',
 
                                                          }}
+                                                         endAdornment = {
+                                                           <InputAdornment position="end">
+                                                            <Icon>school</Icon>
+                                                            </InputAdornment>
+                                                         }
                                                        >
 
                                                          <option value="" />
