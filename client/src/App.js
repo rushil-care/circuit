@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import Faculty from './containers/StudentRegister/StudentRegister';
+import Login from './containers/Login/Login';
+import Ecircuit from './Ecircuit'
+import { BrowserRouter } from 'react-router-dom';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import purple from 'material-ui/colors/purple';
 import yellow from 'material-ui/colors/yellow';
@@ -16,10 +18,13 @@ class App extends Component {
 
   render() {
     return (
+      <BrowserRouter>
+
       <MuiThemeProvider theme={theme}>
 
-      <Faculty />
+      <Ecircuit />
       </MuiThemeProvider>
+    </BrowserRouter>
     );
   }
 }
