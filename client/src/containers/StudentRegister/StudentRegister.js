@@ -72,13 +72,13 @@ class StudentReg extends Component {
 
    signupHandler = () => {
         const data = {
-          RegistrationNo : this.state.RegistrationNo,
-          Name : this.state.FirstName + ' ' + this.state.LastName,
-          Password : this.state.Password,
-          Email: this.state.Email
+          regno : this.state.RegistrationNo,
+          name : this.state.FirstName + ' ' + this.state.LastName,
+          email: this.state.Email,
+         password : this.state.Password
 
         }
-        axios.post('',data)
+        axios.post('http://localhost:5000/users',data)
         .then(response => {
           console.log(response);
         });

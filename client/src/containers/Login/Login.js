@@ -15,6 +15,7 @@ import Date from '../../components/DatePicker/DatePicker';
 import SignUpHeader from '../../components/SignUpHeader/SignUpHeader';
 import * as colors from 'material-ui/colors';
 import './Login.css';
+import Dialog from '../../components/Dialog/Dialog'
 
 import StudentRegister from '../StudentRegister/StudentRegister';
 
@@ -152,12 +153,13 @@ class Login extends Component {
 
                       <Grid item xs={6} >
                         <Grid container justify='flex-start' className="OtherItems">
-                        <a href="localhost:3000/" target="_blank">TOP CODERS</a>
+                    <a href="localhost:3000/" target="_blank">TOP CODERS</a>
+                      
                         </Grid>
                       </Grid>
                       <Grid item xs={6}  >
                         <Grid container justify='flex-end' className="OtherItems">
-                          <a href="http://localhost:3000/Student-signup" target="_blank">REGISTER</a>
+                          <Dialog />
                         </Grid>
                       </Grid>
 

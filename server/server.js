@@ -10,12 +10,17 @@ var app= express();
 app.use(bodyParser.json());
 
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 
 //POST USERS
 
 app.post('/users',(req,res)=>{
-  var body = _.pick(req.body,['email','password']);
+  var body = _.pick(req.body,['regno','name','email','password']);
   var user =  new User(body);
 
 
