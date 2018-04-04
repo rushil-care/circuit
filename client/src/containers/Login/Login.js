@@ -16,7 +16,7 @@ import SignUpHeader from '../../components/SignUpHeader/SignUpHeader';
 import * as colors from 'material-ui/colors';
 import './Login.css';
 import Dialog from '../../components/Dialog/Dialog'
-
+import axios from 'axios';
 import StudentRegister from '../StudentRegister/StudentRegister';
 
 import AppBar from '../../components/AppBar/AppBar'
@@ -72,6 +72,23 @@ const theme = createMuiTheme({
 
 class Login extends Component {
 
+
+    state = {
+      email : '',
+      password : ''
+    }
+
+    LoginHandler = () => {
+      const data = {
+        email : this.state.email,
+        password : this.state.password
+      }
+      axios.post('http://localhost:5000/users/login',data)
+      .then(response => {
+        console.log(response);
+      });
+    }
+
   render() {
     const { classes } = this.props;
     return (
@@ -102,6 +119,7 @@ class Login extends Component {
 
                                 id="EmId"
                                 type="text"
+                                value={this.state.email} onChange={(event) => this.setState({email: event.target.value})}
 
                                 endAdornment={
                                   <InputAdornment position="end">
@@ -121,8 +139,8 @@ class Login extends Component {
                               <Input
 
                                 id="EmId"
-                                type="text"
-
+                                type="password"
+                                value={this.state.password} onChange={(event) => this.setState({password: event.target.value})}
                                 endAdornment={
                                   <InputAdornment position="end">
                                     <Icon>vpn_key</Icon>
@@ -138,7 +156,7 @@ class Login extends Component {
                     </Grid>
                     <Grid container direction='row' spacing={24} justify='flex-end' className="ButtonCont"  >
                       <Grid item xs={4}  >
-                        <Button variant="raised" color="secondary" >Login </Button>
+                        <Button variant="raised" color="secondary"   onClick={this.LoginHandler} >Login </Button>
                       </Grid>
 
 
@@ -154,7 +172,7 @@ class Login extends Component {
                       <Grid item xs={6} >
                         <Grid container justify='flex-start' className="OtherItems">
                     <a href="localhost:3000/" target="_blank">TOP CODERS</a>
-                      
+
                         </Grid>
                       </Grid>
                       <Grid item xs={6}  >

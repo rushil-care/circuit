@@ -9,7 +9,7 @@ var app= express();
 
 app.use(bodyParser.json());
 
-
+//ENABLE CORS
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -56,6 +56,8 @@ app.post('/users/login',(req,res) => {
     });
 });
 
+
+//SIgn Out ROUTE
 app.delete('/users/me/token',authenticate, (req, res)=> {
 
     req.user.removeToken(req.token).then(()=> {
