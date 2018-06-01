@@ -1,0 +1,27 @@
+.bkg{
+   
+  background:linear-gradient(135deg,#ffe60069,#00ffff33);
+
+    
+    flex-grow: 1;
+
+}
+.CardContainer
+{
+    margin: 10vh 5vw;
+}
+.rowItem
+{
+    padding-top:20px;
+}
+.submitButton
+{
+    padding: 7vh 0vh 3vh 0vh;
+
+}
+.List{
+  width: 230px;
+}
+.GridContainer{
+    text-align: center
+}
